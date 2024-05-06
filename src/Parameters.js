@@ -9,10 +9,11 @@ import Select from '@mui/material/Select';
 import ReactSelect from "react-select";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import processCity from './processCity.js';
+import RenderCity from './RenderCity.js';
 
 export function Parameters(){
 // primary flag handlers
-
 
   const [town, setTown] = useState('');
   const handleTownChange = (event) => {
@@ -30,6 +31,10 @@ export function Parameters(){
   };
 //secondary flag handlers
   const [secondaryFlags, setSecondaryFlags] = useState([]);
+  let secondaryFlagsValues = [];
+//manage display of rendered city
+
+  
     return(
     <div>
       <div className="dropdown-container">
@@ -43,11 +48,11 @@ export function Parameters(){
             label="Town"
             onChange={handleTownChange}
           >
-            <MenuItem value={1}>Commune (1-75)</MenuItem>
-            <MenuItem value={2}>Settlement (76-200)</MenuItem>
-            <MenuItem value={3}>Town (201-600)</MenuItem>
-            <MenuItem value={4}>City (600-2k)</MenuItem>
-            <MenuItem value={5}>Stronghold (2k+)</MenuItem>
+            <MenuItem value={"Commune"}>Commune (1-75)</MenuItem>
+            <MenuItem value={"Settlement"}>Settlement (76-200)</MenuItem>
+            <MenuItem value={"Town"}>Town (201-600)</MenuItem>
+            <MenuItem value={"City"}>City (600-2k)</MenuItem>
+            <MenuItem value={"Stronghold"}>Stronghold (2k+)</MenuItem>
           </Select>
         </div>
         <div className="dropdown">
@@ -59,11 +64,11 @@ export function Parameters(){
                 label="Biome"
                 onChange={handleBiomeChange}
               >
-                <MenuItem value={1}>Forest</MenuItem>
-                <MenuItem value={2}>Mountain</MenuItem>
-                <MenuItem value={3}>Grassland</MenuItem>
-                <MenuItem value={4}>Coast</MenuItem>
-                <MenuItem value={5}>Underground</MenuItem>
+                <MenuItem value={"Forest"}>Forest</MenuItem>
+                <MenuItem value={"Mountain"}>Mountain</MenuItem>
+                <MenuItem value={"Grassland"}>Grassland</MenuItem>
+                <MenuItem value={"Coast"}>Coast</MenuItem>
+                <MenuItem value={"Underground"}>Underground</MenuItem>
               </Select>
           </div>
           <div className="dropdown">
@@ -75,12 +80,12 @@ export function Parameters(){
                 label="Dominant Population"
                 onChange={handlePopChange}
               >
-                <MenuItem value={1}>Human</MenuItem>
-                <MenuItem value={2}>Elf</MenuItem>
-                <MenuItem value={3}>Dwarf</MenuItem>
-                <MenuItem value={4}>Tiefling</MenuItem>
-                <MenuItem value={5}>Gnome</MenuItem>
-                <MenuItem value={6}>Random</MenuItem>
+                <MenuItem value={"Human"}>Human</MenuItem>
+                <MenuItem value={"Elf"}>Elf</MenuItem>
+                <MenuItem value={"Dwarf"}>Dwarf</MenuItem>
+                <MenuItem value={"Tiefling"}>Tiefling</MenuItem>
+                <MenuItem value={"Gnome"}>Gnome</MenuItem>
+                <MenuItem value={"Random"}>Random</MenuItem>
               </Select>
           </div>
         </div>
@@ -88,7 +93,7 @@ export function Parameters(){
         <div>
           <h2>Secondary Flags</h2>
           <ReactSelect
-            onChange={(selectedValue) => setSecondaryFlags(selectedValue)}
+            onChange={(secondaryFlags) => setSecondaryFlags(secondaryFlags)}
             isMulti
             isSearchable
             options={[
@@ -96,12 +101,20 @@ export function Parameters(){
               { label: "Haunted", value: "haunted" },
               { label: "RequireScholars", value: "requirescholars" },
               { label: "MilitaryInstallation", value: "militaryinstallation" }
-              
             ]}
             className="multiselect"
           ></ReactSelect>
         </div>
-        <Button variant="outlined" endIcon={<SendIcon/>}>Generate</Button>
+        <Button onClick={() => {
+          
+          for (let i = 0; i < secondaryFlags.length; i++){
+             secondaryFlagsValues.push(secondaryFlags[i].value);
+          }
+          processCity(town, biome, pop, secondaryFlagsValues);
+        }}variant="outlined" endIcon={<SendIcon/>}>Generate</Button>
+        
+        
+        
       </div>
     );
 }
