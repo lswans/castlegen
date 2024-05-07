@@ -1,5 +1,6 @@
 import calcPopDistributions from "./calcPopDistribution";
 import Place from './Place.js';
+import determineDistricts from './determineDistricts.js';
 
 export default function processCity(town, biome, pop, secflags){
     
@@ -18,6 +19,9 @@ export default function processCity(town, biome, pop, secflags){
     let finalPop = Math.floor(Math.random() * (popRange[1] - popRange[0]) + popRange[0]);
     let popDistribution = calcPopDistributions(pop, finalPop, []);
     
-    return([finalPop, popDistribution]);
+    //determine districts present in town
+    const includedDistricts = determineDistricts(town, biome, secflags, popDistribution);
+
+    return([finalPop, popDistribution, includedDistricts]);
     
 }

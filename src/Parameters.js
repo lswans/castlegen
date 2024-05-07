@@ -38,7 +38,7 @@ export function Parameters(){
 
 //manage display of rendered city
   const [showPlace, setShowPlace] = useState(false);
-  const [placeData, setPlaceData] = useState([0, {"Human": 1, "Elf": 1, "Dwarf": 1, "Tiefling": 1, "Gnome": 1}]);
+  const [placeData, setPlaceData] = useState([0, {"Human": 1, "Elf": 1, "Dwarf": 1, "Tiefling": 1, "Gnome": 1}], []);
 
 //button click handler
   const handleClick = event => {
@@ -46,7 +46,7 @@ export function Parameters(){
       secondaryFlagsValues.push(secondaryFlags[i].value);
     }
     setPlaceData((processCity(town, biome, pop, secondaryFlagsValues)));
-    setShowPlace(current => !current);
+    setShowPlace(true);
   }
     return(
     <div>
@@ -119,7 +119,7 @@ export function Parameters(){
           ></ReactSelect>
         </div>
         <Button onClick={handleClick} variant="outlined" endIcon={<SendIcon/>}>Generate</Button>
-        {<Place population={placeData[0]} distributionKeys={Object.keys(placeData[1])} distributionValues={Object.values(placeData[1])}/>}
+        {showPlace && <Place population={placeData[0]} distributionKeys={Object.keys(placeData[1])} distributionValues={Object.values(placeData[1])} includedDistricts={placeData[2]}/>}
        
         
         

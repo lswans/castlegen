@@ -34,23 +34,23 @@ export default function calcPopDistributions(dominant, total, exclusions){
             
             else if(key != dominant){
                 //percentages[key] -= 5;
-                let result = Math.floor(Math.random() * (15 - 10) + 10);
+                let result = (Math.random() * (15 - 5) + 5);
                 percentages[key] = result;
                 totalPercent += result;
+               
             }
             else if(key == dominant){
                 //percentages[key] += 20;
-                let result = Math.floor(Math.random() * (50 - 40) + 40);
+                let result = (Math.random() * (50 - 40) + 40);
                 percentages[key] = result;
                 totalPercent += result;
             }
-            console.log("total percent: " + totalPercent);
+            
             let totalPeople = Math.round(percentages[key]/ 100 * total);
             popDistribution[key] = totalPeople;
             
           }
-          console.log(total);
-          console.log(popDistribution);
+         
           
     }
     //console.log(percentages);
