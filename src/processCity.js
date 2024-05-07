@@ -1,3 +1,5 @@
+import calcPopDistributions from "./calcPopDistribution";
+import Place from './Place.js';
 
 export default function processCity(town, biome, pop, secflags){
     
@@ -13,8 +15,9 @@ export default function processCity(town, biome, pop, secflags){
     
     //set attributes for Place object: population, biome, races and flags
     const popRange = populationRanges[town];
-    let finalPop = Math.floor(Math.random() * popRange[1] + popRange[0]);
-    console.log(finalPop);
-    return("")
+    let finalPop = Math.floor(Math.random() * (popRange[1] - popRange[0]) + popRange[0]);
+    let popDistribution = calcPopDistributions(pop, finalPop, []);
+    
+    return([finalPop, popDistribution]);
     
 }

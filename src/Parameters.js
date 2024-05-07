@@ -11,6 +11,8 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import processCity from './processCity.js';
 import RenderCity from './RenderCity.js';
+import Place from './Place.js';
+
 
 export function Parameters(){
 // primary flag handlers
@@ -32,9 +34,20 @@ export function Parameters(){
 //secondary flag handlers
   const [secondaryFlags, setSecondaryFlags] = useState([]);
   let secondaryFlagsValues = [];
-//manage display of rendered city
 
-  
+
+//manage display of rendered city
+  const [showPlace, setShowPlace] = useState(false);
+  const [placeData, setPlaceData] = useState([0, {"Human": 1, "Elf": 1, "Dwarf": 1, "Tiefling": 1, "Gnome": 1}]);
+
+//button click handler
+  const handleClick = event => {
+    for (let i = 0; i < secondaryFlags.length; i++){
+      secondaryFlagsValues.push(secondaryFlags[i].value);
+    }
+    setPlaceData((processCity(town, biome, pop, secondaryFlagsValues)));
+    setShowPlace(current => !current);
+  }
     return(
     <div>
       <div className="dropdown-container">
@@ -105,14 +118,9 @@ export function Parameters(){
             className="multiselect"
           ></ReactSelect>
         </div>
-        <Button onClick={() => {
-          
-          for (let i = 0; i < secondaryFlags.length; i++){
-             secondaryFlagsValues.push(secondaryFlags[i].value);
-          }
-          processCity(town, biome, pop, secondaryFlagsValues);
-        }}variant="outlined" endIcon={<SendIcon/>}>Generate</Button>
-        
+        <Button onClick={handleClick} variant="outlined" endIcon={<SendIcon/>}>Generate</Button>
+        {<Place population={placeData[0]} distributionKeys={Object.keys(placeData[1])} distributionValues={Object.values(placeData[1])}/>}
+       
         
         
       </div>
