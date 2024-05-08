@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/castlegen/static/css/main.238190ae.css",
+    "main.js": "/castlegen/static/js/main.ba0764f7.js",
+    "static/js/453.a77080ba.chunk.js": "/castlegen/static/js/453.a77080ba.chunk.js",
+    "static/media/logo.svg": "/castlegen/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/castlegen/index.html",
+    "main.238190ae.css.map": "/castlegen/static/css/main.238190ae.css.map",
+    "main.ba0764f7.js.map": "/castlegen/static/js/main.ba0764f7.js.map",
+    "453.a77080ba.chunk.js.map": "/castlegen/static/js/453.a77080ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.238190ae.css",
+    "static/js/main.ba0764f7.js"
+  ]
+}
