@@ -1,6 +1,7 @@
-import calcPopDistributions from "./calcPopDistribution";
-import Place from './Place.js';
+import calcPopDistributions from "./calcPopDistribution.js";
+import Place from '../Place.js';
 import determineDistricts from './determineDistricts.js';
+import calcRandomNumber from "./calcRandomNumber.js";
 
 export default function processCity(town, biome, pop, secflags){
     

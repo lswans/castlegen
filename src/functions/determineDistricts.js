@@ -13,30 +13,30 @@ export default function determineDistricts(town, biome, secflags, popDistributio
     if(totalDistricts == 0){
         totalDistricts = 1;
     }
-    console.log("DISTRICTS TO PICK: " + totalDistricts);
+
     //associate districts with biome types
-    let districts = {"Farming":["Grassland", "Forest", "Coast", "Mountains"],
+    let districts = {"Farming":["Grassland", "Forest", "Coast", "Mountain"],
                         "Logging": ["Forest"],
                         "Fishing": ["Coast"],
-                        "Trading" : ["Grassland", "Forest", "Coast", "Mountains", "Underground"],
-                        "Wineries":["Grassland", "Coast", "Mountains", "Underground"],
-                        "Mines": ["Grassland", "Mountains", "Underground"],
+                        "Trading" : ["Grassland", "Forest", "Coast", "Mountain", "Underground"],
+                        "Wineries":["Grassland", "Coast", "Mountain", "Underground"],
+                        "Mines": ["Grassland", "Mountain", "Underground"],
                         "Drydocks": ["Coast"],
-                        "Forges": ["Grassland", "Forest", "Coast", "Mountains", "Underground"],
-                        "Barracks": ["Grassland", "Forest", "Coast", "Mountains", "Underground"],
-                        "Scholar's Residence": ["Grassland", "Forest", "Coast", "Mountains", "Underground"],
+                        "Forges": ["Grassland", "Forest", "Coast", "Mountain", "Underground"],
+                        "Barracks": ["Grassland", "Forest", "Coast", "Mountain", "Underground"],
+                        "Scholar's Residence": ["Grassland", "Forest", "Coast", "Mountain", "Underground"],
                         "Circus": ["Grassland", "Forest", "Coast"]
                         
         };
     
     //form list of possible districts to choose from given the parameters
-    let possibleDistricts = [];
+   let possibleDistricts = [];
     for (let [key, value] of Object.entries(districts)){
         if(value.includes(biome)){
             possibleDistricts.push(key);
         }
     }
-    
+    console.log(possibleDistricts);
     //randomly select the districts
     let finalDistricts = [];
     

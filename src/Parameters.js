@@ -9,8 +9,7 @@ import Select from '@mui/material/Select';
 import ReactSelect from "react-select";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import processCity from './processCity.js';
-import RenderCity from './RenderCity.js';
+import processCity from './functions/processCity.js';
 import Place from './Place.js';
 
 
@@ -98,6 +97,7 @@ export function Parameters(){
                 <MenuItem value={"Dwarf"}>Dwarf</MenuItem>
                 <MenuItem value={"Tiefling"}>Tiefling</MenuItem>
                 <MenuItem value={"Gnome"}>Gnome</MenuItem>
+                <MenuItem value={"Equal"}>Equal</MenuItem>
                 <MenuItem value={"Random"}>Random</MenuItem>
               </Select>
           </div>

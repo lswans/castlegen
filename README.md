@@ -5,6 +5,9 @@ This tool will generate information describing a fantasy setting for your creati
 dominant population (from a list), and immediately get a template for a town.
 
 # Update History
+## 5/9/2024
+- Added helper functions for generating sets of random numbers.
+- Added fully randomized population percentages (setting "Dominant Population" to "Random").
 ## 5/7/2024
 - Added randomly generated populations configured by inputs
 - Added primary "districts" (industries supporting the town). A

@@ -1,5 +1,5 @@
-
-
+import calcRandomNumber from "./calcRandomNumber";
+import setOfRandomInts from "./setOfRandomInts";
 export default function calcPopDistributions(dominant, total, exclusions){
     const races = ["Human", "Elf", "Dwarf", "Tiefling", "Gnome"];
     
@@ -10,6 +10,10 @@ export default function calcPopDistributions(dominant, total, exclusions){
         races.unshift(dominant);
     }
     */
+   function randomlyDistributeValues(){
+    
+  
+   }
     let humanPercent = 20, elfPercent = 20, dwarfPercent = 20, tieflingPercent = 20, gnomePercent = 20; 
     const percentages = {
         "Human": humanPercent,
@@ -19,14 +23,34 @@ export default function calcPopDistributions(dominant, total, exclusions){
         "Gnome": gnomePercent
     }
     let popDistribution = {};
+    function setPopDistribution(key){//key = race being set (e.g. "Human")
+        let totalPeople = Math.round(percentages[key]/ 100 * total);
+        popDistribution[key] = totalPeople;
+    }
+
     let placeholder = 25
-    if(dominant == "Random" || dominant == null){
-        //humanPercent, elfPercent, dwarfPercent, tieflingPercent, gnomePercent = 20;
+    //set all populations to an equal value adding up to the total population
+    if(dominant == "Equal" || dominant == null){
+        for (let [key, value] of Object.entries(percentages)){
+            setPopDistribution(key);
+        }
+    //set random populations while ensuring the dominant population is the largest number.
+    }else if(dominant == "Random"){
+        let unassignedRaces = Object.keys(percentages);
+        let populations = setOfRandomInts(unassignedRaces.length, total);
+        for(let i = 0; i < Object.keys(percentages).length; i++){
+            let index = calcRandomNumber(0, unassignedRaces.length-1);
+            popDistribution[Object.keys(percentages)[i]] = populations[index];
+            //remove the used values for population and race from their respective arrays
+            unassignedRaces.splice(index, 1);
+            populations.splice(index, 1);
+            
+        }
     }else{
         //set percentages
         let totalPercent = 0;
         for (let [key, value] of Object.entries(percentages)){
-            //console.log(key);
+
             if(key == races[races.length-1]){
                 percentages[key] = 100 - totalPercent;
                 totalPercent += 100 - totalPercent;
@@ -45,7 +69,6 @@ export default function calcPopDistributions(dominant, total, exclusions){
                 percentages[key] = result;
                 totalPercent += result;
             }
-            
             let totalPeople = Math.round(percentages[key]/ 100 * total);
             popDistribution[key] = totalPeople;
             
@@ -53,6 +76,6 @@ export default function calcPopDistributions(dominant, total, exclusions){
          
           
     }
-    //console.log(percentages);
+    
     return(popDistribution);
 }
