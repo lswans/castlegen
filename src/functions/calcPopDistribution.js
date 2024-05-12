@@ -38,6 +38,7 @@ export default function calcPopDistributions(dominant, total, exclusions){
     }else if(dominant == "Random"){
         let unassignedRaces = Object.keys(percentages);
         let populations = setOfRandomInts(unassignedRaces.length, total);
+        
         for(let i = 0; i < Object.keys(percentages).length; i++){
             let index = calcRandomNumber(0, unassignedRaces.length-1);
             popDistribution[Object.keys(percentages)[i]] = populations[index];

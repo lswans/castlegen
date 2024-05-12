@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'openai';
+
+//require('dotenv').config();
+
+//console.log(process.env) // remove this after you've confirmed it is working
+//const OpenAI = require('openai');
+//const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

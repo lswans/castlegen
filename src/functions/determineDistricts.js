@@ -36,7 +36,7 @@ export default function determineDistricts(town, biome, secflags, popDistributio
             possibleDistricts.push(key);
         }
     }
-    console.log(possibleDistricts);
+   
     //randomly select the districts
     let finalDistricts = [];
     

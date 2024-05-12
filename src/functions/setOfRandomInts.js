@@ -2,6 +2,7 @@ import calcRandomNumber from "./calcRandomNumber";
 //x = total number of random integers, y = target sum
 export default function setOfRandomInts(x, y){
     let randInts = [];
+    
     while(x>0){
         if (y != 0 && x != 1){
             let n = calcRandomNumber(0, y);

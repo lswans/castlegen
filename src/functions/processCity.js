@@ -2,6 +2,7 @@ import calcPopDistributions from "./calcPopDistribution.js";
 import Place from '../Place.js';
 import determineDistricts from './determineDistricts.js';
 import calcRandomNumber from "./calcRandomNumber.js";
+import { LLMResponse }from '../RequestLLM.tsx';
 
 export default function processCity(town, biome, pop, secflags){
     
@@ -22,7 +23,9 @@ export default function processCity(town, biome, pop, secflags){
     
     //determine districts present in town
     const includedDistricts = determineDistricts(town, biome, secflags, popDistribution);
-
+    
+    //console.log(districtDescriptions); 
+    
     return([finalPop, popDistribution, includedDistricts]);
     
 }
