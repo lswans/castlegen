@@ -1,19 +1,22 @@
+//RequestLLM.tsx is a TypeScript file which handles the API calls to OpenAI.
+
 import React, {useState} from 'react';
 import axios from 'axios';
 import { OpenAI } from 'openai';
 import Button from '@mui/material/Button';
+import parseGPTResponse from './functions/parseGPTResponse.js';
 
 
-const RequestLLM = () => {
-  const [status, setStatus] = useState("Not Started");
-  const [message, setMessage]= useState("You are describing a settlement in a fantasy realm, such as those common in the Dungeons and Dragons universe. Describe the part of the city containing the following: tavern. Your response should be no longer than 2 sentences.");
-  let response = '';
-  //const message = "You are describing a settlement in a fantasy realm, such as those common in the Dungeons and Dragons universe. Describe the part of the city containing the following: tavern. Your response should be no longer than 2 sentences."
+function RequestLLM(props){
+  let input = props.userInput;
+  const [status, setStatus] = useState("Get ChatGPT Description");
+  const [message, setMessage]= useState("You are describing a settlement in a fantasy realm, such as those common in the Dungeons and Dragons universe. Describe the part of the city containing the following: " + input + ". Your response should be no longer than 2 sentences.");
   const [allMessages, setAllMessages] = useState<any[]>([]);
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
 
   const sendMessage = async () => {
+    setStatus("Loading...");
     let url = 'https://api.openai.com/v1/chat/completions'
     let token = 'Bearer ' + apiKey
     let model = 'gpt-3.5-turbo'
@@ -47,17 +50,21 @@ const RequestLLM = () => {
       ]
       setAllMessages(newAllMessages);
       setMessage('')
-      
+      setStatus("Done");
     }
    
   }
-  //sendMessage()
+  let responseText = "";
+  if(allMessages[0]){
+    responseText = parseGPTResponse(allMessages);
+    
+  }
   
-  let responseText = Object.values(allMessages)[1][0].message.content;
   return(
     <div>
-      <Button onClick={sendMessage}>RequestLLM</Button>
+      {status != "Done" && <Button onClick={sendMessage}>{status}</Button>}
       {responseText}
+      
   </div>    
  
   )

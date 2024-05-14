@@ -5,6 +5,12 @@ This tool will generate information describing a fantasy setting for your creati
 dominant population (from a list), and immediately get a template for a town.
 
 # Update History
+## 5/14/2024
+- Setup backend server using Express and Node.js. Planning to use this to route API requests to bypass CORS protections on the fantasy name
+generator at "https://names.ironarachne.com"
+## 5/13/2024
+- Deployments to gh-pages no longer work due to inclusion of api key reference -- this violates gh-pages hosting rules. Will investigate solutions.
+- 'RequestLLM' button text now reads 'Get ChatGPT Description', and button hides when a successful response is receieved from the API.
 ## 5/12/2024
 - Added first functionality for ChatGPT integration. Will soon upgrade to include input from user.
     - Send requests to gpt-3.5-turbo to retrieve unique description of Place components ('Farming District', 'Scholar's Residence', etc.)

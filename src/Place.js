@@ -1,20 +1,26 @@
 import * as React from 'react';
 import useState from 'react';
-import requestLLM from './RequestLLM.tsx';
+import RequestLLM from './RequestLLM.tsx';
+import NpcNamesApi from './NpcNamesApi.js';
+
 
 export default function Place(props){
     let population = props.population;
     let keys = props.distributionKeys;
     let values = props.distributionValues;
-    let includedDistricts=props.includedDistricts;
+
+    let includedDistricts=props.includedDistricts.map(x => {
+        return(
+            <div>
+                <h3>{x}</h3>
+                {<RequestLLM userInput={x}/>}
+                {<NpcNamesApi race={"elf"} gender={"male"} total={10}/>}
+            </div>
+        )
+    })
     
     let districtDescriptions = props.districtDescriptions;
-    /*let includedDistricts = props.includedDistricts.map(district => {
-    let districtText = llmResponse(district);
-        //console.log(districtText);
-        return(<h3>{district}</h3>);
-        });
-    */
+    
     let popDistribution = [];
     for (let i = 0; i < keys.length; i++){
         popDistribution.push(keys[i] + ": " + values[i] + " | ");
@@ -31,6 +37,7 @@ export default function Place(props){
             <p>{popDistribution}</p>
             <h2>Districts</h2>
             {includedDistricts}
+            
             
         </div>
     )

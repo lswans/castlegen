@@ -11,7 +11,9 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import processCity from './functions/processCity.js';
 import Place from './Place.js';
-import RequestLLM  from './RequestLLM.tsx';
+import NpcNamesApi from './NpcNamesApi.js';
+
+import { radioClasses } from '@mui/material';
 
 
 export function Parameters(){
@@ -47,6 +49,7 @@ export function Parameters(){
     }
     setPlaceData((processCity(town, biome, pop, secondaryFlagsValues)));
     setShowPlace(true);
+    
     
   }
 
@@ -124,7 +127,7 @@ export function Parameters(){
         </div>
         <Button onClick={handleClick} variant="outlined" endIcon={<SendIcon/>}>Generate</Button>
         {showPlace && <Place population={placeData[0]} distributionKeys={Object.keys(placeData[1])} distributionValues={Object.values(placeData[1])} includedDistricts={placeData[2]}/>}
-        {showPlace && <RequestLLM />}
+       
         
       </div>
     );
