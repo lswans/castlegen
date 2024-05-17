@@ -5,9 +5,14 @@ This tool will generate information describing a fantasy setting for your creati
 dominant population (from a list), and immediately get a template for a town.
 
 # Update History
+## 5/16/2024
+- Added input fields to customize randnom NPC name api call.
+- Created 'NPC' component to represent randomly generated characters, associated a district with each character. Planning to use this to assign an occupation to each generated NPC (weapon smith, scholar, woodworker, etc).
+## 5/15/2024
+- Added random NPC name generation (does not yet account for user input). 
 ## 5/14/2024
 - Setup backend server using Express and Node.js. Planning to use this to route API requests to bypass CORS protections on the fantasy name
-generator at "https://names.ironarachne.com"
+generator at "https://names.ironarachne.com".
 ## 5/13/2024
 - Deployments to gh-pages no longer work due to inclusion of api key reference -- this violates gh-pages hosting rules. Will investigate solutions.
 - 'RequestLLM' button text now reads 'Get ChatGPT Description', and button hides when a successful response is receieved from the API.

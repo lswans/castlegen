@@ -4,7 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'openai';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDLC41g3i9AtXFxcOblu1OxLk_fK7HsinU",
+  authDomain: "castlegen.firebaseapp.com",
+  projectId: "castlegen",
+  storageBucket: "castlegen.appspot.com",
+  messagingSenderId: "906682622388",
+  appId: "1:906682622388:web:17a08db636d28e25f192e1",
+  measurementId: "G-8YYWXHQDTT"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 //require('dotenv').config();
 
 //console.log(process.env) // remove this after you've confirmed it is working

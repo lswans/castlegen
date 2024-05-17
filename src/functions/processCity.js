@@ -4,7 +4,7 @@ import determineDistricts from './determineDistricts.js';
 import calcRandomNumber from "./calcRandomNumber.js";
 import { LLMResponse }from '../RequestLLM.tsx';
 
-export default function processCity(town, biome, pop, secflags){
+export default function processCity(town, biome, pop, secflags, npcObj){
     
     town = town.toLowerCase();
     //population ranges by town type
@@ -26,6 +26,6 @@ export default function processCity(town, biome, pop, secflags){
     
     //console.log(districtDescriptions); 
     
-    return([finalPop, popDistribution, includedDistricts]);
+    return([finalPop, popDistribution, includedDistricts, npcObj]);
     
 }

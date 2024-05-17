@@ -11,22 +11,30 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 //const response = await apiRequest();
+//app.use(require('body-parser').urlencoded({ extended: false }));
+let requestParams = [];
 
-let result = [];
-
-app.get("/api", (req, res) =>  {
+app.post("/api/:race/:gender/:total", (req, res) =>  {
+    console.log("entering app.post")
+    requestParams.push(req.params.race);
+    requestParams.push(req.params.gender);
+    requestParams.push(req.params.total);
     //const names = fetch("https://names.ironarachne.com/race/elf/female/10")
     apiRequest(res);
 
      //console.log(response);
-     //res.json({ message: "hello!!!"});
+    
      //console.log(result);
      //apiRequest();
 });
+console.log(requestParams);
 async function apiRequest(res) {
-    let data = await axios.get('https://names.ironarachne.com/race/elf/female/10')
+    console.log(requestParams);
+    await axios.get('https://names.ironarachne.com/race/'
+    +requestParams[0]+'/'+requestParams[1]+'/'+requestParams[2])
     .then(response => {
-        console.log(response.data.names)
+        //console.log(response.data.names)
+        //console.log(response.data.names);
         res.json({message: response.data.names})
         })
         //console.log(data);

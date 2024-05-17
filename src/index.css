@@ -25,3 +25,8 @@ code {
   padding-inline: 50px;
   padding-bottom: 20px;
 }
+
+.numberInput{
+  padding-block: 20px;
+  display: flex;
+}

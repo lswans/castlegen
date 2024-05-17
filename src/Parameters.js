@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import processCity from './functions/processCity.js';
 import Place from './Place.js';
-import NpcNamesApi from './NpcNamesApi.js';
+import NPCList from './NPCList.js';
 
 import { radioClasses } from '@mui/material';
 
@@ -43,12 +43,16 @@ export function Parameters(){
   const [placeData, setPlaceData] = useState([0, {"Human": 1, "Elf": 1, "Dwarf": 1, "Tiefling": 1, "Gnome": 1}], []);
   
 //button click handler
+  const raceNames = ["dragonborn", "dwarf", "elf", "gnome", "goblin", "halfling", "halfelf", "halforc", "human", "orc", "tiefling", "troll"]
   const handleClick = event => {
     for (let i = 0; i < secondaryFlags.length; i++){
       secondaryFlagsValues.push(secondaryFlags[i].value);
     }
+    
+    
     setPlaceData((processCity(town, biome, pop, secondaryFlagsValues)));
     setShowPlace(true);
+    
     
     
   }
