@@ -1,0 +1,17 @@
+{
+    "farming": ["Vegetable Farmer", "Cattle Herder", "Produce Seller", "Sheep Herder", "Butcher", "Fruit Farmer", "Exotic Food Trader", "Horse Tamer"],
+    "logging": ["Lumberjack", "Carpenter"],
+    "trading": ["Weapons Trader", "Magic Items Collector", "Armor Trader",
+"Book Trader", "Medicine Trader", ""],
+    "wineries": ["Winemaker"],
+    "mines": ["Ore Miner", "Steel Miner", "Gem Miner"],
+    "port": ["Shipbuilder", "Ship Commissioner"],
+    "forges": ["Steel Worker", "Weaponsmith", "Armorsmith", "Engineer"],
+    "barracks": ["Military Police", "Town Guard", "Soldier", "Officer"],
+    "scholar's residence": ["Scholar in Residence", "Author", "Scholar's Apprentice", "Court Wizard"],
+    "circus": ["Acrobat", "Bard", "Animal Tamer", "Magician"],
+    "apothecary": ["Potion Seller", "Herbalist", "Healer"],
+    "religious center":["Cleric", "Apostle", "Preacher"],
+    "political":["Diplomat", "Mayor"],
+    "royal palace":["King", "Queen", "King's Guard", "Duke", "Dutchess", "Prince", "Princess"]
+}

@@ -19,7 +19,7 @@ export default function NPCList(props){
     let [showData, setShowData] = useState(false);
 
 
-    let url = '/api/';
+    let url = 'https://castlegen-backend.onrender.com/api/';
     const handlePopChange = (event) => {
         setPop(event.target.value);
       };
